@@ -37,32 +37,46 @@ The circle you mark is the center line of the slot.
 ## Quick start
 
 1. Open `circle_template.scad` in [OpenSCAD](https://openscad.org/).
-2. Open the Customizer (Window → Customizer) and set the slot radius for the
-   circle you want, and the template size.
+2. Open the Customizer (Window → Customizer) and set the circle's diameter, in
+   inches or millimetres, and the template size.
 3. Render (F6), export as STL or 3MF, and print it flat. No supports are needed.
 
 ## Parameters
 
-All lengths are in millimetres.
-
 | Parameter | Default | Meaning |
 | --- | --- | --- |
+| `circle_diameter` | 2.625 | Diameter of the circle to mark (the center line of the slot), in `units`. The default is correct for a large button maker. |
+| `units` | in | Units for `circle_diameter`: `in` or `mm`. |
 | `template_width` | 100 | Width of the outer frame. |
 | `template_length` | 100 | Length of the outer frame. |
 | `template_thickness` | 3 | Thickness of the template. |
 | `slot_width` | 2 | Width of the slot you mark or cut through. |
-| `slot_radius` | 33.3375 | Distance from the center to the middle of the slot. The default marks a circle 2.625 in (66.675 mm) across, correct for a large button maker. |
 | `ring_width` | 3 | Width of the inner ring. |
 | `bridge_width` | 2 | Width of each of the four bridges across the slot. |
 | `fill_center` | false | Leave the center solid, so the template is just a plate with a circular slot. |
 | `circle_faces` | 360 | Number of faces on the circles. |
+| `make_label` | true | Engrave the size into the frame below the slot. |
+| `label_text` | (blank) | Text to engrave. Blank means the circle's size, such as `2 5/8 in` or `50 mm`. |
+| `label_size` | 5 | Height of the lettering. |
+| `label_depth` | 0.6 | Depth of the engraving. |
+| `label_font` | Liberation Sans Bold | Font, by its OpenSCAD name (Help → Font List). |
 
-To mark a circle of diameter *D*, set `slot_radius` to *D* / 2. For a size given
-in inches, multiply by 25.4 first: a 2.625 in circle is 2.625 × 25.4 / 2 =
-33.3375 mm.
+Except for `circle_diameter` in inches, all lengths are in millimetres.
 
 The frame must be wider than the slot; the model stops with a message if it
 isn't, or if the ring is so wide that nothing is left for the center hole.
+
+## The label
+
+The label is engraved in the top face, centered in the strip of frame between
+the slot and the near edge. Sizes in inches are written as fractions down to
+32nds (`1 1/4 in`, `2 5/8 in`); anything else is written as a decimal.
+
+If that strip is too narrow for `label_size`, the lettering is made smaller to
+fit, keeping about 1 mm clear of the slot and the edge. If there is less than
+2.5 mm of room, OpenSCAD prints a warning in its console; make the template a
+little longer or turn the label off. The model doesn't check the label's
+width, so keep custom text short on narrow templates.
 
 ## Printing
 
