@@ -5,6 +5,10 @@ marking or cutting circles in fabric, paper or other thin material.
 
 ![Six templates in different sizes](images/six-sizes.jpg)
 
+![A printed template with "2 5/8 in" engraved below the slot](images/labeled.jpg)
+
+The default template, labeled with its size.
+
 It began in a public library makerspace with button makers. The makerspace has
 punches for paper, but many people want to cover their buttons with fabric, and
 used to trace around a paper cut-out. A template holds the fabric flat while you
